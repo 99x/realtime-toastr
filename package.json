@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/99xt/realtime-toastr/issues"
   },
-  "homepage": "https://github.com/99xt/realtime-toastr#readme"
+  "homepage": "https://github.com/99xt/realtime-toastr#readme",
+  "devDependencies": {
+    "jshint": "^2.9.4"
+  },
+    "scripts": {
+    "test": "./node_modules/jshint/bin/jshint test.js"
+  }
 }
