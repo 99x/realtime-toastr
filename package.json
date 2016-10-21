@@ -4,7 +4,8 @@
   "description": "This will give real time non-blocking notifications from server to client",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/jshint/bin/jshint test.js",
+    "start": "npm install && cd server && npm install && set DEBUG=server:* & npm start"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,8 @@
   "devDependencies": {
     "jshint": "^2.9.4"
   },
-    "scripts": {
-    "test": "./node_modules/jshint/bin/jshint test.js"
+  "dependencies": {
+    "express-generator": "^4.13.4",
+    "socket.io": "^1.5.0"
   }
 }
