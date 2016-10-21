@@ -1,0 +1,24 @@
+{
+  "name": "realtime-toastr",
+  "version": "1.0.0",
+  "description": "This will give real time non-blocking notifications from server to client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/99xt/realtime-toastr.git"
+  },
+  "keywords": [
+    "realtime-toastr",
+    "notifications",
+    "non-blocking"
+  ],
+  "author": "Janitha Tennakoon <janitha000@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/99xt/realtime-toastr/issues"
+  },
+  "homepage": "https://github.com/99xt/realtime-toastr#readme"
+}
