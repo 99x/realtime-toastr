@@ -10,6 +10,19 @@ var users = require('./routes/users');
 
 var app = express();
 
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+//Whenever someone connects this gets executed
+io.on('connection', function(socket){
+  console.log('A user connected');
+
+  //Whenever someone disconnects this piece of code executed
+  socket.on('disconnect', function () {
+    console.log('A user disconnected');
+  });
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
