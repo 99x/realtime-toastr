@@ -2,12 +2,10 @@
   "name": "realtime-toastr",
   "version": "1.0.0",
   "description": "This will give real time non-blocking notifications from server to client",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "./node_modules/jshint/bin/jshint test.js",
-    "start-linux": "DEBUG=server.* npm start",
-    "start-win": "set DEBUG=server:* & npm start",
-    "start": "node ./server/bin/www"
+    "start": "nodemon ./bin/www"
   },
   "repository": {
     "type": "git",
