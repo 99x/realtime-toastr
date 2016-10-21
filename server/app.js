@@ -10,17 +10,14 @@ var users = require('./routes/users');
 
 var app = express();
 
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 var http = require('http').Server(app);
-var io = require('socket.io')(http);
 
-//Whenever someone connects this gets executed
-io.on('connection', function(socket){
-  console.log('A user connected');
 
-  //Whenever someone disconnects this piece of code executed
-  socket.on('disconnect', function () {
-    console.log('A user disconnected');
-  });
+app.use(function(req, res, next){
+  res.io = io;
+  next();
 });
 
 // view engine setup
@@ -67,6 +64,10 @@ app.use(function(err, req, res, next) {
     message: err.message,
     error: {}
   });
+});
+
+http.listen(3001, function(){
+  console.log('listening on *:3000');
 });
 
 
