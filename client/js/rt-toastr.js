@@ -8,10 +8,16 @@ var rtToastr = (function(toastr, io){
     
     var obj = {
         subscribe: function(eventName, key){
-            socket = io("http://localhost:3001",{key: key});
+           if(!socket){
+                socket = io("http://localhost:3001",{key: key});
+            }
            socket.on(eventName, function(msg){
                 var message = JSON.parse(msg);
+                if(message){
                 toastr[message.type](message.message);
+                }else{
+                    toastr.error("Wrong Format for:" + msg);
+                }
             }); 
         }
     };

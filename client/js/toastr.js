@@ -45,7 +45,7 @@
 					type: toastType.error,
 					iconClass: getOptions().iconClasses.error,
 					message: message,
-					optionsOverride: showError,
+					optionsOverride: optionsOverride,
 					title: title
 				});
 			}
