@@ -1,15 +1,10 @@
 var rtToastr = (function(toastr, io){
-    var a = toastr;
     var socket;
-        /*socket.on('message', function(msg){
-            var message = JSON.parse(msg);
-            toastr[message.type](message.message);
-    });*/
-    
+        
     var obj = {
-        subscribe: function(eventName, key){
+        subscribe: function(eventName, callback){
            if(!socket){
-                socket = io("http://localhost:3001",{key: key});
+                socket = this.create("http://localhost:3001");
             }
            socket.on(eventName, function(msg){
                 var message = JSON.parse(msg);
@@ -18,10 +13,21 @@ var rtToastr = (function(toastr, io){
                 }else{
                     toastr.error("Wrong Format for:" + msg);
                 }
-            }); 
+                if(callback && typeof callback === "function"){
+                    callback.call();
+                }           
+            });
+            return socket; 
+        },
+        create: function(fullurl){
+             if(!socket){
+                socket = io(fullurl);
+            }            
+            return socket;
+        },
+        getSocketInstance: function(){
+            return socket;
         }
-    };
-    
-    return obj;
-    
+    };    
+    return obj;    
 }(toastr, io));
