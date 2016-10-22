@@ -8,7 +8,7 @@ app.get('/', function(req, res){
 });
 
 clients=[];
-types = ["info", "warn", "success","error"];
+types = ["info", "warning", "success", "error"];
 
 //Whenever someone connects this gets executed
 io.on('connection', function(socket){
@@ -66,13 +66,11 @@ setInterval(function() {
 		sendErrorMessage(clients[client], JSON.stringify(data));
 		break;
 	    case 1:
-		var errorCount = Math.floor((Math.random() * 100) + 1);
         	var client = Math.floor(Math.random() * length) + 0;  
         	var data = createMessage("error", "The operation was a failure");
 		sendFailMessage(clients[client], JSON.stringify(data));
-		break;
+		break;	   
 	    case 2:
-		var errorCount = Math.floor((Math.random() * 100) + 1);
         	var client = Math.floor(Math.random() * length) + 0;  
         	var data = createMessage("success", "The operation was a success");
 		sendSuccessMessage(clients[client], JSON.stringify(data));
