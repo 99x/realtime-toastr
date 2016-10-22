@@ -8,7 +8,7 @@ app.get('/', function(req, res){
 });
 
 clients=[];
-types = ["info", "warn", "success"];
+types = ["info", "warn", "success","error"];
 
 //Whenever someone connects this gets executed
 io.on('connection', function(socket){
@@ -41,8 +41,8 @@ function sendSuccessMessage(socketid, data){
 	io.to(socketid).emit('SuccessMessage', data)
 }
 
-function createMessage(type, errorCount){
-	var jsonData = { type : type, message : "Error count " + errorCount};
+function createMessage(type, data){
+	var jsonData = { type : type, message : data};
         return jsonData;
 }
 
@@ -51,7 +51,8 @@ setInterval(function() {
 
 	var i = Math.floor(Math.random() * 3) + 0;
         var length = clients.length; 
-        var client = Math.floor(Math.random() * length) + 0;  
+        var client = Math.floor(Math.random() * length) + 0;
+
 
         console.log(i);
 	console.log(client);
@@ -60,23 +61,21 @@ setInterval(function() {
 	    case 0:
 		var errorCount = Math.floor((Math.random() * 100) + 1);
         	var client = Math.floor(Math.random() * length) + 0;  
-        	var type = Math.floor(Math.random() * 3) + 0;
+                var type = Math.floor(Math.random() * 4) + 0;
         	var data = createMessage(types[type], errorCount);
 		sendErrorMessage(clients[client], JSON.stringify(data));
 		break;
 	    case 1:
 		var errorCount = Math.floor((Math.random() * 100) + 1);
         	var client = Math.floor(Math.random() * length) + 0;  
-        	var type = Math.floor(Math.random() * 3) + 0;
-        	var data = createMessage(types[type], errorCount);
-		sendErrorMessage(clients[client], JSON.stringify(data));
+        	var data = createMessage("error", "The operation was a failure");
+		sendFailMessage(clients[client], JSON.stringify(data));
 		break;
 	    case 2:
 		var errorCount = Math.floor((Math.random() * 100) + 1);
         	var client = Math.floor(Math.random() * length) + 0;  
-        	var type = Math.floor(Math.random() * 3) + 0;
-        	var data = createMessage(types[type], errorCount);
-		sendErrorMessage(clients[client], JSON.stringify(data));
+        	var data = createMessage("success", "The operation was a success");
+		sendSuccessMessage(clients[client], JSON.stringify(data));
 	    default:
 		break;
 	}
