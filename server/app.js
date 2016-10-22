@@ -8,7 +8,7 @@ app.get('/', function(req, res){
 });
 
 clients=[];
-types = ["Info", "Warn", "Success"];
+types = ["info", "warn", "success"];
 
 //Whenever someone connects this gets executed
 io.on('connection', function(socket){
@@ -42,7 +42,7 @@ function sendSuccessMessage(socketid, data){
 }
 
 function createMessage(type, errorCount){
-	var jsonData = { "Type" : type, "Message" : "Error count " + errorCount};
+	var jsonData = { type : type, message : "Error count " + errorCount};
         return jsonData;
 }
 
@@ -62,13 +62,21 @@ setInterval(function() {
         	var client = Math.floor(Math.random() * length) + 0;  
         	var type = Math.floor(Math.random() * 3) + 0;
         	var data = createMessage(types[type], errorCount);
-		sendErrorMessage(clients[client], data);
+		sendErrorMessage(clients[client], JSON.stringify(data));
 		break;
 	    case 1:
-		sendFailMessage(clients[client], "THIS IS A FAIL");
+		var errorCount = Math.floor((Math.random() * 100) + 1);
+        	var client = Math.floor(Math.random() * length) + 0;  
+        	var type = Math.floor(Math.random() * 3) + 0;
+        	var data = createMessage(types[type], errorCount);
+		sendErrorMessage(clients[client], JSON.stringify(data));
 		break;
 	    case 2:
-		sendSuccessMessage(clients[client], "THIS IS A SUCCESS");
+		var errorCount = Math.floor((Math.random() * 100) + 1);
+        	var client = Math.floor(Math.random() * length) + 0;  
+        	var type = Math.floor(Math.random() * 3) + 0;
+        	var data = createMessage(types[type], errorCount);
+		sendErrorMessage(clients[client], JSON.stringify(data));
 	    default:
 		break;
 	}
