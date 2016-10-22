@@ -8,7 +8,7 @@ app.get('/', function(req, res){
 });
 
 clients=[];
-types = ["info", "warn", "success", "error"];
+types = ["info", "warning", "success", "error"];
 
 //Whenever someone connects this gets executed
 io.on('connection', function(socket){
