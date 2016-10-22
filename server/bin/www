@@ -37,8 +37,10 @@ io.on('connection', function(socket){
   socket.on('disconnect', function () {
     console.log('A user disconnected');
   });
-
-   socket.emit('new message', "toastr mesage");
+  
+  //type can be warning/success/info/error
+  var msg = {type: "info", message: "You are connected!"}
+   socket.emit('new message', JSON.stringify(msg));
 
 });
 

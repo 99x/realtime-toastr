@@ -1,0 +1,1 @@
+var realTimeToastr = rtToastr.subscribe("errorCount", "index.html");

@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head><title>Hello world</title></head>
-  <script src="/socket.io/socket.io.js"></script>
+  <!--<script src="/socket.io/socket.io.js"></script>
   <script>
     var socket = io();
-  </script>
-  <body>Hello world</body>
+    socket.on('errorCount', function(data){
+    	document.getElementById('message-container').innerHTML += '<div><b>' + data.Type + " " + data.Message + '</div>'
+    });
+
+    socket.on('FailMessage', function(data){
+    	document.getElementById('message-container').innerHTML += '<div><b>' + data + '</div>'
+    });
+
+    socket.on('SuccessMessage', function(data){
+    	document.getElementById('message-container').innerHTML += '<div><b>' + data + '</div>'
+    });
+  </script>-->
+  <body>Hello world
+<div id="message-container"></div>
+</body>
 </html>
