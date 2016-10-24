@@ -5,6 +5,17 @@
 [![Build Status](https://travis-ci.org/99xt/realtime-toastr.svg?branch=master)](https://travis-ci.org/99xt/realtime-toastr)
 
 realtime-toastr is a real time, non blocking, serverside notification service. This enables users to get notifications from the server without having to listen/poll the server, when they are available.
+## Usage
+
+## Contributor guidelines
+
+- Fork the repository.
+- Clone the forked repository.
+- Create your own branch.
+- Create tests and make sure tests pass on travis.
+- Usage section of Readme should be update for new features
+- Create a pull request with changes made.
+
 
 # Licence
 
