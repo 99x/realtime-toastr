@@ -3,6 +3,8 @@ var app = express();
 var http = require('http').Server(app)
 var io = require('socket.io')(http);
 
+var winston = require('winston');
+
 app.get('/', function(req, res){
   res.sendfile('index.html');
 });
@@ -12,7 +14,7 @@ types = ["info", "warning", "success", "error"];
 
 //Whenever someone connects this gets executed
 io.on('connection', function(socket){
-  console.log('A user connected');
+  winston.info('A user connected');
   clients.push(socket.id);
 
   //Whenever someone disconnects this piece of code executed
@@ -20,7 +22,7 @@ io.on('connection', function(socket){
       var i = clients.indexOf(socket.id);
       clients.splice(i, 1);
    
-    console.log('A user disconnected');
+    winston.info('A user disconnected');
   });
 
 //setTimeout(function(){
@@ -50,12 +52,11 @@ function createMessage(type, data){
 setInterval(function() {
 
 	var i = Math.floor(Math.random() * 3) + 0;
-        var length = clients.length; 
-        var client = Math.floor(Math.random() * length) + 0;
-
-
-        console.log(i);
-	console.log(client);
+      var length = clients.length; 
+      var client = Math.floor(Math.random() * length) + 0;
+      
+      winston.info(i);
+      winston.info(client);
 
 	switch(i) {
 	    case 0:
@@ -81,7 +82,7 @@ setInterval(function() {
 },5000);
 
 http.listen(3001, function(){
-  console.log('listening on *:3001');
+  winston.info('listening on *:3001');
 });
 
 
