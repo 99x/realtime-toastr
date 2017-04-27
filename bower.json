@@ -1,0 +1,22 @@
+{
+  "name": "realtime-toastr",
+  "homepage": "https://github.com/99xt/realtime-toastr",
+  "authors": [
+    "99X Technology <ashfanf@99x.lk>"
+  ],
+  "description": "This will give real time non-blocking notifications from server to client",
+  "main": "",
+  "keywords": [
+    "realtime-toastr",
+    "notifications",
+    "non-blocking"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
